@@ -1,0 +1,13 @@
+cffa edfe #magic
+0700 0001 #cputype
+0300 0080 #cpusubtype
+0200 0000 #filetype
+0100 0000 #ncmds
+0800 0000 #sizeofcmds
+8500 2000 #flags
+0000 0000 #reserved
+
+2a00 0000 #type LC_SOURCE_VERSION
+1000 0000 #size
+0000 0000
+0000 0000

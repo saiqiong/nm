@@ -37,12 +37,15 @@ include .misc/make/misc_var
 
 ## Project name (will be used)
 PROJECT	=	ft_nm
+PROJECT_OTOOL = 	ft_otool
 
 ## Project source path
-P_SRC =	src
+P_SRC =	src/ft_nm
+O_SRC = src/ft_otool
 
 ## Project include
-P_INCLUDE = include
+P_INCLUDE = include\ft_nm
+O_INCLUDE = include\ft_otool
 
 ## compiler related
 CC		:=	clang ## default compiler is clang
@@ -76,6 +79,9 @@ endif
 MAIN	?=	$(P_SRC)/main.c
 NAME	?=	$(PROJECT) 		## The name of your binary
 
+MAIN_OTOOL	?=	$(O_SRC)/main.c
+NAME_OTOOL	?=	$(PROJECT_OTOOL) 	
+
 #The name of the library you want to make
 LIB_A	?=	$(PROJECT).a
 
@@ -93,9 +99,14 @@ SRC		=		$(MAIN)					\
 				#Add other source files here...	\
 				#$(P_SRC)/<yourfile>.c	\
 
+SRC_OTOOL	=	$(MAIN_OTOOL)					\
+				#Add other source files here...	\
+				#$(P_SRC)/<yourfile>.c	\
+
 
 ## Objects without path names
-OBJ		:=	$(addsuffix .o, $(basename $(SRC)))
+OBJ			:=	$(addsuffix .o, $(basename $(SRC)))
+OBJ_OTOOL	:=	$(addsuffix .o, $(basename $(SRC_OTOOL)))
 
 ## Objects with their path name
 OBJ_P	=	$(addprefix $(P_OBJ)/,$(OBJ))	## addprefix add the
@@ -103,21 +114,29 @@ OBJ_P	=	$(addprefix $(P_OBJ)/,$(OBJ))	## addprefix add the
 
 ## All header (.h) files so if they changed then all files will be recompiled
 HEADERS =	$(P_INCLUDE)/nm_otool.h
+O_HEADERS =	$(O_INCLUDE)/nm_otool.h
 
 ## Start making here
 __START: all
 
 ## For multiple Binarys
-all : $(NAME)
+all : $(NAME) $(NAME_OTOOL)
 
-$(OBJ) : $(LIBFT_A)
+$(OBJ)		 : $(LIBFT_A)
+$(OBJ_OTOOL) : $(LIBFT_A)
 
 $(NAME): $(OBJ)
 	@$(CC) $(CFLAGS) $(OBJ) -o $(NAME) $(LIBFT_A)
 
+$(NAME_OTOOL): $(OBJ_OTOOL)
+	@$(CC) $(CFLAGS) $(OBJ_OTOOL) -o $(NAME_OTOOL) $(LIBFT_A)
+
 ## Compiles any object file that is added as dependency
 %.o: %.c $(HEADERS)
 	$(CC) $(CFLAGS) -I $(P_INCLUDE) -c -o $@ $<
+
+%.o: %.c $(O_HEADERS)
+	$(CC) $(CFLAGS) -I $(O_INCLUDE) -c -o $@ $<
 
 #Default library related
 $(LIBFT_A):
@@ -127,15 +146,21 @@ $(LIBFT_A):
 clean:
 	make clean -C 	$(LIBFT)
 	rm		-f	$(OBJ)
-	printf	"$(WARN)[!][$(PROJECT)] Removed all objects from ./$(P_OBJ)$(C_DEF)\n"
+	rm		-f	$(OBJ_OTOOL)
+	printf	"$(WARN)[!][$(PROJECT)] Removed all objects from ./$(P_SRC)\n"
 	printf	"$(OK)[+][$(PROJECT)] Cleaned$(C_DEF)\n"
+	printf	"$(WARN)[!][$(PROJECT_OTOOL)] Removed all objects from ./$(O_SRC)\n"
+	printf	"$(OK)[+][$(PROJECT_OTOOL)] Cleaned$(C_DEF)\n"
 
 ## Cleans everything
 fclean:		clean
 	make fclean -C 	$(LIBFT)
 	rm		-f	$(NAME)
-	printf	"$(WARN)[!][$(PROJECT)] Removed all binary ./$(P_BIN)$(C_DEF)\n"
-	printf	"$(OK)[+][$(PROJECT)] Fully cleaned$(C_DEF)\n"
+	rm		-f	$(NAME_OTOOL)
+	printf	"$(WARN)[!][$(PROJECT)] Removed all binary\n"
+	printf	"$(OK)[+][$(PROJECT)] Fully cleaned.\n"
+	printf	"$(WARN)[!][$(PROJECT_OTOOL)] Removed all binary\n"
+	printf	"$(OK)[+][$(PROJECT_OTOOL)] Fully cleaned.\n"
 
 re:			fclean all
 

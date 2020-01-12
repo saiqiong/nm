@@ -1,0 +1,28 @@
+cffa edfe #magic
+0700 0001 #cputype
+0300 0080 #cpusubtype
+0200 0000 #filetype
+0100 0000 #ncmds
+4800 0000 #huge sizeofcmds
+8500 2000 #flags
+0000 0000 #reserved
+
+1900 0000 # cmd
+9800 0000 # cmdsize
+0000 0000
+0000 0000
+0000 0000
+0000 0000 # segname
+0000 0000
+0000 0000 # vmaddr
+0000 0000
+0000 0000 # vmsize
+0000 0000
+0000 0000 # fileoff
+0000 0000
+0000 0000 # filesize
+0000 0000 # maxprot
+0000 0000 # initprot
+
+0000 0000 # nsects
+0000 0000 # flags
