@@ -6,7 +6,7 @@
 /*   By: saxiao <saxiao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:04:17 by saxiao            #+#    #+#             */
-/*   Updated: 2020/01/13 16:14:51 by saxiao           ###   ########.fr       */
+/*   Updated: 2020/01/13 17:27:31 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,6 +56,7 @@ static char		symbol(char *ptr, char *a, int should_swap, int is_64)
 		return ('s');
 	if (should_swap)
 		swap_section(sections_add, is_64);
+	letter = 's';
 	sec_name = is_64 ? ((struct section_64 *)sections_add)->sectname :\
 	((struct section *)sections_add)->sectname;
 	seg_name = is_64 ? ((struct section_64 *)sections_add)->segname :\

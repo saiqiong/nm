@@ -96,13 +96,37 @@ LIBFT_MAKE_FLAGS =
 ## sources and objects where path names are removed.
 ## Add all your source files to this variable
 SRC		=		$(MAIN)					\
-				#Add other source files here...	\
-				#$(P_SRC)/<yourfile>.c	\
+				$(P_SRC)/dump.c \
+				$(P_SRC)/get_symbol_letter.c \
+				$(P_SRC)/get.c \
+				$(P_SRC)/handle_each_arch.c \
+				$(P_SRC)/handle_nm.c \
+				$(P_SRC)/handle_not_fat.c \
+				$(P_SRC)/helper.c \
+				$(P_SRC)/is_safe.c \
+				$(P_SRC)/nm.c \
+				$(P_SRC)/print_nm_list.c \
+				$(P_SRC)/question.c \
+				$(P_SRC)/set_flag.c \
+				$(P_SRC)/sort_list_by_name.c \
+				$(P_SRC)/swap_bytes.c \
+				$(P_SRC)/swap_elements.c \
+				$(P_SRC)/swap_elements_2.c \
+				$(P_SRC)/helper_2.c \
+
+
 
 SRC_OTOOL	=	$(MAIN_OTOOL)					\
-				#Add other source files here...	\
-				#$(P_SRC)/<yourfile>.c	\
-
+				$(O_SRC)/dump.c \
+				$(O_SRC)/get.c \
+				$(O_SRC)/handle_not_fat.c \
+				$(O_SRC)/handle_otool.c \
+				$(O_SRC)/helper.c \
+				$(O_SRC)/is_safe.c \
+				$(O_SRC)/question.c \
+				$(O_SRC)/swap_elements_2.c \
+				$(O_SRC)/swap_elements.c \
+				$(O_SRC)/swap_bytes.c \
 
 ## Objects without path names
 OBJ			:=	$(addsuffix .o, $(basename $(SRC)))

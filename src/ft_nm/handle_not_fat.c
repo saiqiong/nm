@@ -6,7 +6,7 @@
 /*   By: saxiao <saxiao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:06:44 by saxiao            #+#    #+#             */
-/*   Updated: 2020/01/13 16:18:20 by saxiao           ###   ########.fr       */
+/*   Updated: 2020/01/13 17:28:31 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ static t_nm		*free_list_return_null(t_nm *list)
 	return (NULL);
 }
 
-static void		h(t_nm **l, unsigned int *i, int s, struct symtab_command *m)
+static void		he(t_nm **l, unsigned int *i, int s, struct symtab_command *m)
 {
 	*l = NULL;
 	if (s)
@@ -37,7 +37,7 @@ static t_nm		*list_symtab(struct load_command *lc, char *ptr, int s, int x)
 	sym = (struct symtab_command *)lc;
 	if (!is_safe((char *)lc + sizeof(*sym)))
 		return (NULL);
-	h(&list, &i, s, sym);
+	he(&list, &i, s, sym);
 	stringtable = (void *)ptr + sym->stroff;
 	while (i < sym->nsyms)
 	{

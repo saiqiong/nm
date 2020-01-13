@@ -6,7 +6,7 @@
 /*   By: saxiao <saxiao@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2020/01/13 15:06:48 by saxiao            #+#    #+#             */
-/*   Updated: 2020/01/13 16:28:11 by saxiao           ###   ########.fr       */
+/*   Updated: 2020/01/13 17:25:44 by saxiao           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,7 +38,7 @@ t_nm			*add_list(t_nm *list, t_nm *add)
 	return (list);
 }
 
-unsigned int	*get_add(int is_64, struct load_command	*lc)
+unsigned int	get_add(int is_64, struct load_command	*lc)
 {
 	unsigned int	res;
 
